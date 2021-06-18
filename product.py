@@ -3,13 +3,13 @@ import os # operating system
 # 讀取檔案
 def read_file(filename):
 	products = []
-		with open (filename, 'r', encoding = 'utf-8') as f:
-			for line in f:
-				if '商品,價格' in line:
-					continue #繼續
-				n, price = line.strip().split(',')
-				products.append([n, price])
-		print(products)
+	with open (filename, 'r', encoding = 'utf-8') as f:
+		for line in f:
+			if '商品,價格' in line:
+				continue #繼續
+			n, price = line.strip().split(',')
+			products.append([n, price])
+	print(products)
 	return products # 存取products清單
 # 讓使用者輸入
 def user_input(products):
@@ -32,9 +32,10 @@ def write_file(filename, products):
 		for p in products:
 			f.write(p[0] + ',' + p[1] + '\n')
 def main():
+	filename = 'products.csv'
 	if os.path.isfile(filename):# 檢查檔案在不在
 		print('找到檔案。')
-		products = read_file('products.csv')
+		products = read_file(filename)
 	else:
 		print('找不到檔案')
 		
